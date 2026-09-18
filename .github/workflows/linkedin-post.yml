@@ -1,0 +1,31 @@
+name: Draft LinkedIn Post
+ 
+on:
+  schedule:
+    # 10am IST = 4:30am UTC
+    - cron: '30 4 * * *'
+  workflow_dispatch:
+ 
+jobs:
+  draft-post:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: |
+          npm install axios dotenv
+      
+      - name: Draft and Post to Slack
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+        run: |
+          node draft-post.js
