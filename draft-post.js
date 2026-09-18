@@ -10,7 +10,7 @@ async function generateTrendingPost() {
     const response = await axios.post(
       'https://api.anthropic.com/v1/messages',
       {
-        model: 'claude-opus-4-1',
+        model: 'claude-opus-5',
         max_tokens: 1024,
         messages: [
           {
