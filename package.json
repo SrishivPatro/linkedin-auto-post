@@ -1,0 +1,17 @@
+{
+  "name": "linkedin-auto-post",
+  "version": "1.0.0",
+  "description": "Daily LinkedIn post automation with Slack approval",
+  "main": "draft-post.js",
+  "scripts": {
+    "draft": "node draft-post.js",
+    "post": "node post-to-linkedin.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
